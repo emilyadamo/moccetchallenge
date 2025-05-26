@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  dashboard:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-agent-dashboard
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    networks:
+      - dashboard-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Optional: Add a reverse proxy
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./proxy.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - dashboard
+    networks:
+      - dashboard-network
+    restart: unless-stopped
+    profiles:
+      - production
+
+networks:
+  dashboard-network:
+    driver: bridge
+
+volumes:
+  nginx-logs:
+    driver: local
