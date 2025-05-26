@@ -1,0 +1,62 @@
+{
+  "name": "ai-agent-performance-dashboard",
+  "version": "1.0.0",
+  "description": "Enterprise-grade analytics platform for monitoring and optimizing AI agent performance",
+  "homepage": "https://yourusername.github.io/ai-agent-dashboard",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ai-agent-dashboard.git"
+  },
+  "keywords": [
+    "ai-analytics",
+    "performance-monitoring",
+    "business-intelligence",
+    "react-dashboard",
+    "data-visualization"
+  ],
+  "author": "Your Name <your.email@company.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.8.0",
+    "lucide-react": "^0.263.1",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.0",
+    "postcss": "^8.4.24",
+    "autoprefixer": "^10.4.14",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^13.5.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write src/**/*.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
